@@ -1,6 +1,7 @@
 ﻿using ApiJWT.Interfaces;
 using ApiJWT.Models;
 using Dapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -23,6 +24,7 @@ namespace ApiJWT.Controllers
         }
 
         [HttpPost("Autenticar")]
+        [AllowAnonymous]
         public IActionResult Autenticar(string nombre, string clave) 
         {
             var parametros = new { @nombre = nombre, @Clave = clave };
