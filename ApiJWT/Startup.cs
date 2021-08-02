@@ -1,6 +1,7 @@
 using ApiJWT.Interfaces;
 using ApiJWT.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,6 +40,12 @@ namespace ApiJWT
                 options.RequireHttpsMetadata = false;
                 options.TokenValidationParameters = tokenprovider.getValidationParameters();
             });
+            services.AddAuthorization(auth=> {
+                auth.DefaultPolicy = new AuthorizationPolicyBuilder()
+                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                    .RequireAuthenticatedUser()
+                    .Build();
+            });
             services.AddTransient<Conexion>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -60,7 +67,7 @@ namespace ApiJWT
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
