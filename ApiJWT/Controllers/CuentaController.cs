@@ -27,7 +27,7 @@ namespace ApiJWT.Controllers
 
         [HttpPost("Autenticar")]
         [AllowAnonymous]
-        public IActionResult Autenticar(string nombre, string clave) 
+        public IActionResult Autenticar([FromForm]string nombre, [FromForm] string clave) 
         {
             var parametros = new { @nombre = nombre, @Clave = clave };
             var resultado = _conexion.QuerySingleOrDefault<Usuario>("validarUsuario",parametros,commandType: CommandType.StoredProcedure);
