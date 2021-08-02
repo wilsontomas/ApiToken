@@ -29,7 +29,16 @@ namespace ApiJWT
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
+            var tokenprovider = new TokenProvider(
+                Configuration["Jwt:Issuer"],
+                Configuration["Jwt:Audience"],
+                Configuration["Jwt:SecretKey"]
+                );
+            services.AddSingleton<ITokenProvider>(tokenprovider);
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options=> {
+                options.RequireHttpsMetadata = false;
+                options.TokenValidationParameters = tokenprovider.getValidationParameters();
+            });
             services.AddTransient<Conexion>();
             services.AddControllers();
             services.AddSwaggerGen(c =>

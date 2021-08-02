@@ -18,9 +18,11 @@ namespace ApiJWT.Controllers
     public class CuentaController : ControllerBase
     {
         public readonly SqlConnection _conexion;
+        private readonly ITokenProvider tokenProvider;
 
-        public CuentaController(Conexion conexion) {
+        public CuentaController(Conexion conexion, ITokenProvider tokenProvider) {
             _conexion = conexion.conexion;
+            this.tokenProvider = tokenProvider;
         }
 
         [HttpPost("Autenticar")]
@@ -32,7 +34,13 @@ namespace ApiJWT.Controllers
             if (resultado == null) {
                 return BadRequest("Credenciales invalidas");
             }
-            return Ok("ok");
+            DateTime expiration = DateTime.UtcNow.AddHours(24);
+            int expirationInHours = 24;
+            var token = tokenProvider.createtoken(resultado, expiration);
+            return Ok(new { 
+            token=token,
+            expires_in= expirationInHours * 60 * 60
+            });
         }
     }
 }
