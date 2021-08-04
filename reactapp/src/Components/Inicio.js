@@ -20,7 +20,8 @@ const Inicio = () => {
             localStorage.setItem('Autenticacion', JSON.stringify(respuesta.data));
             history.push("/Noticias");
        }catch(error){
-           alert(error.message)
+           //alert(error.message);
+           seterrorMsn(true);
         }
           }
     return (
@@ -31,6 +32,9 @@ const Inicio = () => {
                 <form method="post" onSubmit={_login}>
                 <input type="text" id="login" className="fadeIn second" name="nombre" placeholder="Inicio de sesion" />
                 <input type="text" id="password" className="fadeIn third" name="clave" placeholder="clave" />
+                {errorMsn ? 
+                <span>Credenciales invalidas</span>: null
+                }
                 <input type="submit" className="fadeIn fourth" value="Log In" />
                 </form>
 
