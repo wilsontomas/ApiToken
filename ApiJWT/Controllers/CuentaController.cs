@@ -42,5 +42,13 @@ namespace ApiJWT.Controllers
             expires_in= expirationInHours * 60 * 60
             });
         }
+
+        [HttpGet("Validar")]
+        [Authorize]
+        public IActionResult validar() {
+            //var tvp = tokenProvider.getValidationParameters()
+            
+            return Ok("Acceso permitido");
+        }
     }
 }
