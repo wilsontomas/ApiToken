@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 import cliente from '../axiosConfig';
 
 const NavbarComponent = () => {
 const history = useHistory();
 
-const valorPaises = cliente.ObtenerPaises();
-let paises=[];
-valorPaises.then(result=>{
-   paises=result; 
-   console.log(paises)});
+let ListaPaises=[];
+ useEffect(() => {
+   (async ()=>{
+     await cliente.ObtenerPaises().then(resultado=>ListaPaises=resultado);
+   console.log(ListaPaises)
+   })();
+  
+ }, [])
+  
 
 
 
@@ -34,7 +38,7 @@ valorPaises.then(result=>{
             <li className="nav-item ">
               <a className="nav-link text-white" href="#">Home <span className="sr-only">(current)</span></a>
                 <select className="form-control"> 
-               
+                {console.log(ListaPaises)}
                 </select>
             </li>
           
