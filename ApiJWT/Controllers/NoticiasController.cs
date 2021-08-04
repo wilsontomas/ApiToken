@@ -67,7 +67,7 @@ namespace ApiJWT.Controllers
             }
         }
 
-        [HttpGet("ObtenerNoticiasPorCategoria")]
+        [HttpPost("ObtenerNoticiasPorCategoria")]
         [Authorize]
         public IEnumerable<ArticulosNoticias> ObtenerNoticiasPorCategoria([FromForm] int categoria)
         {
@@ -85,7 +85,7 @@ namespace ApiJWT.Controllers
         }
         
 
-        [HttpGet("ObtenerNoticiasPorPais")]
+        [HttpPost("ObtenerNoticiasPorPais")]
         [Authorize]
         public IEnumerable<ArticulosNoticias> ObtenerNoticiasPorPais([FromForm] int pais)
         {
@@ -102,7 +102,7 @@ namespace ApiJWT.Controllers
             }
         }
         
-        [HttpGet("ObtenerNoticiaPorId")]
+        [HttpPost("ObtenerNoticiaPorId")]
         [Authorize]
         public ArticulosNoticias ObtenerNoticiaPorId([FromForm] int id)
         {

@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import '../Components/login.css'
@@ -10,7 +10,7 @@ const Inicio = () => {
             history.push("/Noticias");
         }
         
-    }, [])
+    }, [history])
 
    const _login = async (e)=>{
        e.preventDefault();
@@ -35,7 +35,7 @@ const Inicio = () => {
                 {errorMsn ? 
                 <span>Credenciales invalidas</span>: null
                 }
-                <input type="submit" className="fadeIn fourth" value="Log In" />
+                <input type="submit" className="fadeIn fourth" value="Iniciar Sesion" />
                 </form>
 
             </div>

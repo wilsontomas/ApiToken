@@ -1,8 +1,21 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom';
+import cliente from '../axiosConfig';
 
 const NavbarComponent = () => {
 const history = useHistory();
+
+const valorPaises = cliente.ObtenerPaises();
+let paises=[];
+valorPaises.then(result=>{
+   paises=result; 
+   console.log(paises)});
+
+
+
+
+
+
   const cerrarSesion =()=>{
     
     localStorage.removeItem('Autenticacion');
@@ -20,7 +33,9 @@ const history = useHistory();
           <ul className="navbar-nav mr-auto">
             <li className="nav-item ">
               <a className="nav-link text-white" href="#">Home <span className="sr-only">(current)</span></a>
-
+                <select className="form-control"> 
+               
+                </select>
             </li>
           
           </ul>
