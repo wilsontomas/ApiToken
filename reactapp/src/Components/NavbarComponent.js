@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import cliente from '../axiosConfig';
 
 const NavbarComponent = () => {
 const history = useHistory();
 
-let ListaPaises=[];
+
+const [paises, setpaises] = useState([])
  useEffect(() => {
    (async ()=>{
-     await cliente.ObtenerPaises().then(resultado=>ListaPaises=resultado);
-   console.log(ListaPaises)
+     await cliente.ObtenerPaises().then(resultado=>setpaises(resultado));
+  
    })();
   
  }, [])
@@ -35,11 +36,13 @@ let ListaPaises=[];
 
         <div className="collapse navbar-collapse " id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item ">
-              <a className="nav-link text-white" href="#">Home <span className="sr-only">(current)</span></a>
-                <select className="form-control"> 
-                {console.log(ListaPaises)}
+            <li className="nav-item form-inline my-2 my-lg-0">
+                 <select className="form-control"> 
+                {paises.map(valor=><option key={valor.idPais} value={valor.idPais}>{valor.nombrePais}</option>
+                )}
+                {console.log(paises)}
                 </select>
+                <button className="btn btn-success">BuscarPorPais</button>
             </li>
           
           </ul>
