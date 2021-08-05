@@ -27,7 +27,15 @@ const Noticias = () => {
             <div className="container">
                 <div className="row">
                     {console.log(Noticias)}
-                    {Noticias.map(datos=><Carta key={datos.idNoticias} />
+                    {Noticias.map(datos=><Carta 
+                    titulo={datos.titulo} 
+                    idNoticias={datos.idNoticias} 
+                    fecha={datos.fecha} 
+
+                    nombreCategoria={datos.nombreCategoria}
+                    nombrePais={datos.nombrePais}
+                    articulo={datos.articulo}
+                    key={datos.idNoticias} />
                     )}{console.log(Noticias)}
                 </div>
             </div>
