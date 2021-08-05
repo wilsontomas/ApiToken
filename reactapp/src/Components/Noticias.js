@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import cliente from '../axiosConfig';
+import Carta from './Carta';
 import NavbarComponent from './NavbarComponent'
 
 const Noticias = () => {
@@ -18,17 +19,20 @@ const Noticias = () => {
         }
        
       })();
-    },[Noticias])
+    },[])
     return (
         <div>
             <NavbarComponent />
             <h3>Inicio</h3>
             <div className="container">
-
+                <div className="row">
+                    {console.log(Noticias)}
+                    {Noticias.map(datos=><Carta key={datos.idNoticias} />
+                    )}{console.log(Noticias)}
+                </div>
             </div>
-            {busqueda}
-            {pais}
-            {categoria}
+            
+           
         </div>
     )
 }
