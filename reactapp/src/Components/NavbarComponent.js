@@ -6,11 +6,12 @@ const NavbarComponent = () => {
 const history = useHistory();
 
 
-const [paises, setpaises] = useState([])
+const [paises, setpaises] = useState([]);
+const [categoria, setcategoria] = useState([])
  useEffect(() => {
    (async ()=>{
      await cliente.ObtenerPaises().then(resultado=>setpaises(resultado));
-  
+    await cliente.ObtenerCategorias().then(resultado=>setcategoria(resultado));
    })();
   
  }, [])
@@ -40,11 +41,20 @@ const [paises, setpaises] = useState([])
                  <select className="form-control"> 
                 {paises.map(valor=><option key={valor.idPais} value={valor.idPais}>{valor.nombrePais}</option>
                 )}
-                {console.log(paises)}
+               
                 </select>
-                <button className="btn btn-success">BuscarPorPais</button>
+                <button className="btn btn-success">Pais</button>
             </li>
           
+
+            <li className="nav-item form-inline my-2 my-lg-0">
+                 <select className="form-control"> 
+                {categoria.map(valor=><option key={valor.idCategoria} value={valor.idCategoria}>{valor.nombreCategoria}</option>
+                )}
+                {console.log(categoria)}
+                </select>
+                <button className="btn btn-success">Categoria</button>
+            </li>
           </ul>
           <div className="form-inline my-2 my-lg-0">
             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" ></input>

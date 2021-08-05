@@ -37,7 +37,16 @@ const ObtenerPaises = async ()=>{
 const ObtenerCategorias = async ()=>{
     let data=[];
     try{
-       await axios.get("https://localhost:44394/api/Noticias/ObtenerCategoria").then(respuesta=>{
+        let token="";
+        if(localStorage.getItem("Autenticacion")){
+            const data = JSON.parse(localStorage.getItem("Autenticacion"));
+            token = data.token;
+        }
+        const headers = {
+            'Authorization': 'Bearer '+token
+            
+        };
+       await axios.get("https://localhost:44394/api/Noticias/ObtenerCategoria", {headers}).then(respuesta=>{
         data = respuesta.data;
        }).catch(error=>{console.log(error)});
       // console.log(data);
