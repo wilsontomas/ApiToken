@@ -34,6 +34,28 @@ const ObtenerPaises = async ()=>{
     }
 }
 
+const ObtenerNoticias = async ()=>{
+    let data =[];
+    try{
+        let token="";
+        if(localStorage.getItem("Autenticacion")){
+            const data = JSON.parse(localStorage.getItem("Autenticacion"));
+            token = data.token;
+        }
+        const headers = {
+            'Authorization': 'Bearer '+token
+            
+        };
+       await axios.get("https://localhost:44394/api/Noticias/ObtenerNoticias",{headers}).then(respuesta=>{
+        data = respuesta.data;
+       }).catch(error=>{console.log(error)});
+      // console.log(data);
+       return data;
+    }catch{
+        return null;
+    }
+}
+
 const ObtenerCategorias = async ()=>{
     let data=[];
     try{
@@ -59,7 +81,8 @@ const ObtenerCategorias = async ()=>{
 
 const cliente ={
     ObtenerPaises,
-    ObtenerCategorias
+    ObtenerCategorias,
+    ObtenerNoticias
 }
 
 export default cliente;

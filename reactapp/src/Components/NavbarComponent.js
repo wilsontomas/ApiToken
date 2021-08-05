@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import cliente from '../axiosConfig';
 
 const NavbarComponent = () => {
@@ -23,7 +23,6 @@ const [categoria, setcategoria] = useState([])
 
  const manejarCategoria =()=>{
   let id = document.getElementById("categoria").value;
-  console.log(id);
   query.delete('pais')
   query.delete('busqueda')
   query.set('categoria',id)
@@ -32,7 +31,6 @@ const [categoria, setcategoria] = useState([])
 
  const manejarPais=()=>{
   let id = document.getElementById("pais").value;
-  console.log(id);
   query.delete('busqueda')
   query.delete('categoria')
   query.set('pais',id)
@@ -43,7 +41,6 @@ const [categoria, setcategoria] = useState([])
 
  const manejarBusqueda =()=>{
   let id = document.getElementById("busqueda").value;
-  console.log(id);
   query.delete('pais')
   query.delete('categoria')
   query.set('busqueda',id)
@@ -62,7 +59,7 @@ const [categoria, setcategoria] = useState([])
     return (
         <div>
              <nav className="navbar navbar-expand-lg navbar-light bg-primary">
-          <a className="navbar-brand" href="#">Navbar</a>
+          <Link className="navbar-brand text-white" to="/Noticias">Inicio</Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
