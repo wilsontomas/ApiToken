@@ -119,5 +119,21 @@ namespace ApiJWT.Controllers
             }
         }
 
+        [HttpPost("ObtenerNoticiaPorBusqueda")]
+        [Authorize]
+        public ArticulosNoticias ObtenerNoticiaPorBusqueda([FromForm] string termino)
+        {
+            var parametros = new { @termino = termino };
+            if (termino == null) return null;
+            try
+            {
+                var noticia = _conexion.QuerySingleOrDefault<ArticulosNoticias>("ObtenerNoticiaPorBusqueda", parametros, commandType: System.Data.CommandType.StoredProcedure);
+                return noticia;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

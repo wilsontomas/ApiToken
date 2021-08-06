@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import cliente from '../axiosConfig';
 import Carta from './Carta';
 import NavbarComponent from './NavbarComponent'
 
 const Noticias = () => {
     const location = useLocation();
+    const history = useHistory();
     const query =new URLSearchParams(location.search)
     const busqueda = query.get('busqueda');
     const pais = query.get('pais');
     const categoria = query.get('categoria');
     const [Noticias, setNoticias] = useState([])
     useEffect(() => {
-      
+        //comprobamos que el token exista y si no es asi entonces redireccionamos al login
+        if(localStorage.getItem('Autenticacion')==null){
+            history.push("/Inicio");
+        }
+       
       (async ()=>{
         if(busqueda ==null && pais==null && categoria==null){
              await cliente.ObtenerNoticias().then(resultado=>setNoticias(resultado));             
