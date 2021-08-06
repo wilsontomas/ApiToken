@@ -64,7 +64,7 @@ const ObtenerNoticiaPorBusqueda = async (terminoNoticia)=>{
     let data=[];
     try{
         let parametros ={termino:terminoNoticia}
-       await axios.get("https://localhost:44394/api/Noticias/ObtenerNoticiaPorBusqueda",parametros, {headers}).then(respuesta=>{
+       await axios.post("https://localhost:44394/api/Noticias/ObtenerNoticiaPorBusqueda",parametros, {headers}).then(respuesta=>{
         data = respuesta.data;
        }).catch(error=>{console.log(error)});
       // console.log(data);

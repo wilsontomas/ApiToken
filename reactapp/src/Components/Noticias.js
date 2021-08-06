@@ -24,7 +24,24 @@ const Noticias = () => {
         }
        
       })();
+
+      if(busqueda){
+        (async ()=>{
+            if(busqueda){
+                 let result =[];  
+                 
+                 await cliente.ObtenerNoticiaPorBusqueda(busqueda).then(resultado=>result=resultado);    
+                if(result.length>0){
+                    setNoticias(result)
+                }else{
+                    setNoticias([])
+                }
+            }
+           
+          })();
+       }
     },[])
+   
     return (
         <div>
             <NavbarComponent />
