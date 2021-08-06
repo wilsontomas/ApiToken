@@ -39,6 +39,7 @@ const Noticias = () => {
                    if(result.length>0){
                         setNoticias(result)
                         console.log(Noticias)
+                        console.log(result);
                     }
                 }
                

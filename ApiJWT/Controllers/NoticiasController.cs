@@ -121,13 +121,13 @@ namespace ApiJWT.Controllers
 
         [HttpGet("ObtenerNoticiaPorBusqueda")]
         [Authorize]
-        public ArticulosNoticias ObtenerNoticiaPorBusqueda(string termino)
+        public IEnumerable<ArticulosNoticias> ObtenerNoticiaPorBusqueda(string termino)
         {
             var parametros = new { @termino = termino };
             if (termino == null) return null;
             try
             {
-                var noticia = _conexion.QuerySingleOrDefault<ArticulosNoticias>("ObtenerNoticiaPorBusqueda", parametros, commandType: System.Data.CommandType.StoredProcedure);
+                var noticia = _conexion.Query<ArticulosNoticias>("ObtenerNoticiaPorBusqueda", parametros, commandType: System.Data.CommandType.StoredProcedure);
                 return noticia;
             }
             catch
