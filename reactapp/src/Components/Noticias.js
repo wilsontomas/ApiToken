@@ -20,7 +20,7 @@ const Noticias = () => {
         }
        
       (async ()=>{
-        if(busqueda ==null && pais==null && categoria==null){
+        if(busqueda ==null && pais==null && categoria==null || busqueda==''){
              await cliente.ObtenerNoticias().then(resultado=>setNoticias(resultado));             
         }
        
@@ -31,15 +31,14 @@ const Noticias = () => {
     useEffect(() => {
         //alert("cambio la url")
        
+        //se detecta si existe el termino de busqueda en la url y si existe se consulta la base de datos
         if(busqueda){
-            (async ()=>{
-                if(busqueda){                     
-                     await cliente.ObtenerNoticiaPorBusqueda(busqueda).then(resultado=>setNoticias(resultado));                 
-                   
-                }
-               
+            (async ()=>{                                  
+                     await cliente.ObtenerNoticiaPorBusqueda(busqueda).then(resultado=>setNoticias(resultado));                                                               
               })();
            }
+
+        
     }, [location])
     return (
         <div>
