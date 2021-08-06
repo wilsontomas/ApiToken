@@ -12,6 +12,7 @@ const Noticias = () => {
     const pais = query.get('pais');
     const categoria = query.get('categoria');
     const [Noticias, setNoticias] = useState([])
+    const [Mensaje, setMensaje] = useState(false)
     useEffect(() => {
         //comprobamos que el token exista y si no es asi entonces redireccionamos al login
         if(localStorage.getItem('Autenticacion')==null){
@@ -32,15 +33,9 @@ const Noticias = () => {
        
         if(busqueda){
             (async ()=>{
-                if(busqueda){
-                     let result =[];  
-                     
-                     await cliente.ObtenerNoticiaPorBusqueda(busqueda).then(resultado=>result =resultado);                 
-                   if(result.length>0){
-                        setNoticias(result)
-                        console.log(Noticias)
-                        console.log(result);
-                    }
+                if(busqueda){                     
+                     await cliente.ObtenerNoticiaPorBusqueda(busqueda).then(resultado=>setNoticias(resultado));                 
+                   
                 }
                
               })();
@@ -62,6 +57,7 @@ const Noticias = () => {
                     articulo={datos.articulo}
                     key={datos.idNoticias} />
                     ) }
+                   
                 </div>
             </div>
             
