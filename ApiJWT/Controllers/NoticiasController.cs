@@ -121,7 +121,7 @@ namespace ApiJWT.Controllers
 
         [HttpPost("ObtenerNoticiaPorBusqueda")]
         [Authorize]
-        public ArticulosNoticias ObtenerNoticiaPorBusqueda([FromHeader]string termino)
+        public ArticulosNoticias ObtenerNoticiaPorBusqueda(string termino)
         {
             var parametros = new { @termino = termino };
             if (termino == null) return null;
