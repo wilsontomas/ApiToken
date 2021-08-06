@@ -31,10 +31,9 @@ const Noticias = () => {
                  let result =[];  
                  
                  await cliente.ObtenerNoticiaPorBusqueda(busqueda).then(resultado=>result=resultado);    
+                 console.log(result)
                 if(result.length>0){
                     setNoticias(result)
-                }else{
-                    setNoticias([])
                 }
             }
            
@@ -48,7 +47,7 @@ const Noticias = () => {
             <h3>Inicio</h3>
             <div className="container">
                 <div className="row">
-                    {console.log(Noticias)}
+                   
                     {Noticias.map(datos=><Carta 
                     titulo={datos.titulo} 
                     idNoticias={datos.idNoticias} 
