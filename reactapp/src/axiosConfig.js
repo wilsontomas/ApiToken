@@ -68,9 +68,10 @@ const ObtenerNoticiaPorBusqueda = async (terminoNoticia)=>{
         data = respuesta.data;
        }).catch(error=>{console.log(error)});
       // console.log(data);
+      if(data==null){return []}
        return data;
     }catch{
-        return null;
+        return [];
     }
 }
 const ObtenerNoticiaPorId = async (idNoticia)=>{

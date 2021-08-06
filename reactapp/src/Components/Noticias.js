@@ -25,22 +25,26 @@ const Noticias = () => {
        
       })();
 
-      if(busqueda){
-        (async ()=>{
-            if(busqueda){
-                 let result =[];  
-                 
-                 await cliente.ObtenerNoticiaPorBusqueda(busqueda).then(resultado=>result=resultado);    
-                 console.log(result)
-                if(result.length>0){
-                    setNoticias(result)
-                }
-            }
-           
-          })();
-       }
     },[])
    
+    useEffect(() => {
+        //alert("cambio la url")
+       
+        if(busqueda){
+            (async ()=>{
+                if(busqueda){
+                     let result =[];  
+                     
+                     await cliente.ObtenerNoticiaPorBusqueda(busqueda).then(resultado=>result =resultado);                 
+                   if(result.length>0){
+                        setNoticias(result)
+                        console.log(Noticias)
+                    }
+                }
+               
+              })();
+           }
+    }, [location])
     return (
         <div>
             <NavbarComponent />
@@ -52,12 +56,11 @@ const Noticias = () => {
                     titulo={datos.titulo} 
                     idNoticias={datos.idNoticias} 
                     fecha={datos.fecha} 
-
                     nombreCategoria={datos.nombreCategoria}
                     nombrePais={datos.nombrePais}
                     articulo={datos.articulo}
                     key={datos.idNoticias} />
-                    )}{console.log(Noticias)}
+                    ) }
                 </div>
             </div>
             
