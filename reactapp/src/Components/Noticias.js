@@ -58,7 +58,7 @@ const Noticias = () => {
     return (
         <div>
             <NavbarComponent />
-            <h3>Inicio</h3>
+           <br />
             <div className="container">
                 <div className="row">
                    
