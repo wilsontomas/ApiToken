@@ -121,7 +121,7 @@ const ObtenerNoticiaPorId = async (id)=>{
         
        await axios.get("https://localhost:44394/api/Noticias/ObtenerNoticiaPorId?id="+id, {headers}).then(respuesta=>{
         data = respuesta.data;
-        debugger;
+       
        }).catch(error=>{console.log(error)});
       // console.log(data);
        return data;

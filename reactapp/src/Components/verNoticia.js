@@ -8,30 +8,40 @@ const VerNoticia = () => {
     const query =new URLSearchParams(location.search)
     const id=query.get('id')
     const [Noticias, setNoticias] = useState({})
+
     useEffect(() => {
-       
+       if(id===null || id===''){
+           history.push('/Noticias')
+       }
        if(id){
-            (async ()=>{
-                console.log(id)
-                 await cliente.ObtenerNoticiaPorId(parseInt(id)).then(resultado=>setNoticias(resultado));
-                 console.log(Noticias)
+            (async ()=>{           
+                 await cliente.ObtenerNoticiaPorId(parseInt(id)).then(resultado=> setNoticias(resultado));
+                
             })();
         }
         
-    }, [])
+    }, [Noticias])
 
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-primary">
   
             <Link className="navbar-brand text-white" to="/Noticias" >Noticias</Link>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
+            
             </nav>
             <br />
             <div className="container">
-                
+                <h3>{Noticias.titulo}</h3>
+                <br />
+                <h5>Fecha: {Noticias.fecha}</h5>
+                <h5>Categoria: {Noticias.nombreCategoria}</h5>
+                <h5>Pais: {Noticias.nombrePais}</h5>
+                <br />
+                <p>{Noticias.articulo}</p>
+                <br />
+                <Link className="btn btn-primary" to="/Noticias">Volver a la pagina principal</Link>
+
+
             </div>
         </div>
     )
