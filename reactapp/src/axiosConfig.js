@@ -91,8 +91,8 @@ const ObtenerNoticiaPorId = async (idNoticia)=>{
 const ObtenerNoticiasPorCategoria = async (idCategoria)=>{
     let data=[];
     try{
-        let parametros ={id:idCategoria}
-       await axios.get("https://localhost:44394/api/Noticias/ObtenerNoticiasPorCategoria",parametros, {headers}).then(respuesta=>{
+       
+       await axios.get("https://localhost:44394/api/Noticias/ObtenerNoticiasPorCategoria?categoria="+idCategoria, {headers}).then(respuesta=>{
         data = respuesta.data;
        }).catch(error=>{console.log(error)});
       // console.log(data);
@@ -105,8 +105,7 @@ const ObtenerNoticiasPorCategoria = async (idCategoria)=>{
 const ObtenerNoticiasPorPais = async (idPais)=>{
     let data=[];
     try{
-        let parametros ={id:idPais}
-       await axios.get("https://localhost:44394/api/Noticias/ObtenerNoticiasPorPais",parametros, {headers}).then(respuesta=>{
+       await axios.get("https://localhost:44394/api/Noticias/ObtenerNoticiasPorPais?pais="+idPais, {headers}).then(respuesta=>{
         data = respuesta.data;
        }).catch(error=>{console.log(error)});
       // console.log(data);

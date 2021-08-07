@@ -20,9 +20,12 @@ const Noticias = () => {
         }
        
       (async ()=>{
-        if(busqueda ==null && pais==null && categoria==null || busqueda==''){
+        if(busqueda ===null && pais===null && categoria===null){
              await cliente.ObtenerNoticias().then(resultado=>setNoticias(resultado));             
         }
+        if(busqueda ==='' || pais==='' || categoria===''){
+            await cliente.ObtenerNoticias().then(resultado=>setNoticias(resultado));             
+       }
        
       })();
 
@@ -37,7 +40,16 @@ const Noticias = () => {
                      await cliente.ObtenerNoticiaPorBusqueda(busqueda).then(resultado=>setNoticias(resultado));                                                               
               })();
            }
-
+        if(pais){
+            (async()=>{
+                await cliente.ObtenerNoticiasPorPais(pais).then(resultado=>setNoticias(resultado))
+            })();
+        }
+        if(categoria){
+            (async ()=>{
+                await cliente.ObtenerNoticiasPorCategoria(categoria).then(resultado=>setNoticias(resultado));
+            })();
+        }
         
     }, [location])
     return (

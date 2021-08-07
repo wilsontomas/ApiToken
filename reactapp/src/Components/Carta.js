@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Carta = (props) => {
-    console.log(props)
+   
     return (
         <div>
             <div className="card mr-3" style={{width: '18rem'}}>
