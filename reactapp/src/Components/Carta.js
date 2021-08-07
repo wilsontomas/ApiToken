@@ -17,6 +17,8 @@ const Carta = (props) => {
             <img className="card-img-top" alt={props.titulo}  src='/news.png' />
             <div className="card-body">
                 <h5 className="card-title">{props.titulo}</h5>
+                <p>Categoria {props.nombreCategoria}</p>
+                <p>Pais {props.nombrePais}</p>
                   <Link className="btn btn-primary" to={{
                     pathname: '/VerNoticia',
                     search: "?id="+props.idNoticias
