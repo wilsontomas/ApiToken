@@ -10,7 +10,7 @@ const Carta = (props) => {
     query.set('id',1)
     history.push('/verNoticia',{search: "?id="+1});
    }
-   console.log(props)
+   
     return (
         <div>
             <div className="card mr-3" style={{width: '18rem'}}>
@@ -18,8 +18,8 @@ const Carta = (props) => {
             <div className="card-body">
                 <h5 className="card-title">{props.titulo}</h5>
                   <Link className="btn btn-primary" to={{
-                    pathname: '/verNoticia',
-                    search: "?query="+props.idNoticias
+                    pathname: '/VerNoticia',
+                    search: "?id="+props.idNoticias
                     }}> Ver Noticia </Link>
             </div>
             </div>

@@ -104,7 +104,7 @@ namespace ApiJWT.Controllers
         
         [HttpGet("ObtenerNoticiaPorId")]
         [Authorize]
-        public ArticulosNoticias ObtenerNoticiaPorId([FromForm] int id)
+        public ArticulosNoticias ObtenerNoticiaPorId( int id)
         {
             var parametros = new { @IdNoticia = id };
             if (id == 0) return null;
