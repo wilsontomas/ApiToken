@@ -41,9 +41,16 @@ const [categoria, setcategoria] = useState([])
 
  const manejarBusqueda =()=>{
   let id = document.getElementById("busqueda").value;
-  query.delete('pais')
-  query.delete('categoria')
-  query.set('busqueda',id)
+  if(id===''){
+    query.delete('pais')
+    query.delete('categoria')
+    query.delete('busqueda')
+  }else{
+    query.delete('pais')
+    query.delete('categoria')
+    query.set('busqueda',id)
+  }
+  
   
   history.push({search: query.toString()});
   

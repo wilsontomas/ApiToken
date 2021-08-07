@@ -23,9 +23,6 @@ const Noticias = () => {
         if(busqueda ===null && pais===null && categoria===null){
              await cliente.ObtenerNoticias().then(resultado=>setNoticias(resultado));             
         }
-        if(busqueda ==='' || pais==='' || categoria===''){
-            await cliente.ObtenerNoticias().then(resultado=>setNoticias(resultado));             
-       }
        
       })();
 
@@ -39,6 +36,7 @@ const Noticias = () => {
             (async ()=>{                                  
                      await cliente.ObtenerNoticiaPorBusqueda(busqueda).then(resultado=>setNoticias(resultado));                                                               
               })();
+              
            }
         if(pais){
             (async()=>{
