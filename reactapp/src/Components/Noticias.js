@@ -48,6 +48,12 @@ const Noticias = () => {
                 await cliente.ObtenerNoticiasPorCategoria(categoria).then(resultado=>setNoticias(resultado));
             })();
         }
+        (async ()=>{
+            if(busqueda ===null && pais===null && categoria===null){
+                 await cliente.ObtenerNoticias().then(resultado=>setNoticias(resultado));             
+            }
+           
+          })();
         
     }, [location])
     return (
@@ -66,7 +72,7 @@ const Noticias = () => {
                     articulo={datos.articulo}
                     key={datos.idNoticias} />
                     ) }
-                   
+                   {Noticias.length===0 ? <h3>No se encontraron registros</h3> :null}
                 </div>
             </div>
             
