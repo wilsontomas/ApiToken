@@ -12,7 +12,6 @@ const Noticias = () => {
     const pais = query.get('pais');
     const categoria = query.get('categoria');
     const [Noticias, setNoticias] = useState([])
-    const [Mensaje, setMensaje] = useState(false)
     useEffect(() => {
         //comprobamos que el token exista y si no es asi entonces redireccionamos al login
         if(localStorage.getItem('Autenticacion')==null){

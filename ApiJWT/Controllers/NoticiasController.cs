@@ -69,7 +69,7 @@ namespace ApiJWT.Controllers
 
         [HttpGet("ObtenerNoticiasPorCategoria")]
         [Authorize]
-        public IEnumerable<ArticulosNoticias> ObtenerNoticiasPorCategoria([FromForm] int categoria)
+        public IEnumerable<ArticulosNoticias> ObtenerNoticiasPorCategoria( int categoria)
         {
             var parametros = new { @idcategoria = categoria };
             if (categoria == 0) return null;
@@ -87,7 +87,7 @@ namespace ApiJWT.Controllers
 
         [HttpGet("ObtenerNoticiasPorPais")]
         [Authorize]
-        public IEnumerable<ArticulosNoticias> ObtenerNoticiasPorPais([FromForm] int pais)
+        public IEnumerable<ArticulosNoticias> ObtenerNoticiasPorPais(int pais)
         {
             var parametros = new { @idpais = pais };
             if (pais == 0) return null;
