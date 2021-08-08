@@ -17,9 +17,11 @@ import axios from "axios";
             token = data.token;
         }
         const headers = {
-            'Authorization': 'Bearer '+token
+            'Authorization': 'Bearer '+token,
+            'Access-Control-Allow-Origin': 'http://localhost:3000'
             
         };
+        
 const ObtenerPaises = async ()=>{
     let data =[];
     try{
