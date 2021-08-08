@@ -23,17 +23,34 @@ namespace WFAppCRUD
         private void button1_Click(object sender, EventArgs e)
         {
             try {
-                /*  conexion.Open();
+                conexion.Open();
                   SqlCommand comando = new SqlCommand("InsertarNoticia", conexion);
                   comando.CommandType = CommandType.StoredProcedure;
                   comando.Parameters.AddWithValue("@Titulo",Titulo.Text);
                   comando.Parameters.AddWithValue("@Articulo",Articulo.Text);
-                  comando.Parameters.AddWithValue("@CategoriaId",Categoria.SelectedItem);
-                  comando.Parameters.AddWithValue("@PaisId",Pais.SelectedItem);
+                  comando.Parameters.AddWithValue("@CategoriaId",(int)Categoria.SelectedValue);
+                  comando.Parameters.AddWithValue("@PaisId",(int)Pais.SelectedValue);
                   comando.ExecuteNonQuery();
-                  conexion.Close();*/
-                MessageBox.Show(Pais.SelectedItem.ToString());
-            }catch(Exception ex)
+                  conexion.Close();
+               // MessageBox.Show(Pais.SelectedValue.ToString());
+
+
+
+                //cargamos las noticias
+                conexion.Open();
+                SqlCommand comando3 = new SqlCommand("ObtenerNoticiasModel", conexion);
+                comando3.CommandType = CommandType.StoredProcedure;
+                var listaNoticias = new List<ArticuloNoticias>();
+                var resultado2 = comando3.ExecuteReader();
+
+                while (resultado2.Read())
+                {
+                    listaNoticias.Add(new Models.ArticuloNoticias { IdNoticias = resultado2.GetInt32(0), Titulo = resultado2.GetString(1), Articulo = resultado2.GetString(2), NombreCategoria = resultado2.GetString(4), NombrePais = resultado2.GetString(5) });
+                }
+                conexion.Close();
+                dataGrid.DataSource = listaNoticias;
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error");
             }
@@ -46,6 +63,7 @@ namespace WFAppCRUD
 
         private void Form1_Load_1(object sender, EventArgs e)
         {
+            //cargamos los paises
             conexion.Open();
             SqlCommand comando1 = new SqlCommand("ObtenerPais", conexion);
             comando1.CommandType = CommandType.StoredProcedure;
@@ -60,7 +78,7 @@ namespace WFAppCRUD
             Pais.ValueMember = "IdPais";
             Pais.DataSource = listaPais;
 
-
+            //cargamos las categorias
             conexion.Open();
             SqlCommand comando2 = new SqlCommand("ObtenerCategoria", conexion);
             comando2.CommandType = CommandType.StoredProcedure;
@@ -76,6 +94,19 @@ namespace WFAppCRUD
             Categoria.ValueMember = "IdCategoria";
             Categoria.DataSource = listaCategoria;
 
+            //cargamos las noticias
+            conexion.Open();
+            SqlCommand comando3 = new SqlCommand("ObtenerNoticiasModel", conexion);
+            comando3.CommandType = CommandType.StoredProcedure;
+            var listaNoticias = new List<ArticuloNoticias>();
+            var resultado2 = comando3.ExecuteReader();
+
+            while (resultado2.Read())
+            {
+                listaNoticias.Add(new Models.ArticuloNoticias { IdNoticias = resultado2.GetInt32(0), Titulo = resultado2.GetString(1), Articulo=resultado2.GetString(2),NombreCategoria=resultado2.GetString(4), NombrePais=resultado2.GetString(5) });
+            }
+            conexion.Close();
+            dataGrid.DataSource = listaNoticias;
         }
     }
 }

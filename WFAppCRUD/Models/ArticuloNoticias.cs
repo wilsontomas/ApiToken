@@ -11,7 +11,6 @@ namespace WFAppCRUD.Models
         public int IdNoticias { get; set; }
         public string Titulo { get; set; }
         public string Articulo { get; set; }
-        public DateTime Fecha { get; set; }
         public string NombreCategoria { get; set; }
         public string NombrePais { get; set; }
     }
