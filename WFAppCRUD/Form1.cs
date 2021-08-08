@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WFAppCRUD.Models;
 
 namespace WFAppCRUD
 {
@@ -18,7 +19,7 @@ namespace WFAppCRUD
         {
             InitializeComponent();
         }
-
+       
         private void button1_Click(object sender, EventArgs e)
         {
             try {
@@ -31,6 +32,7 @@ namespace WFAppCRUD
                   comando.Parameters.AddWithValue("@PaisId",Pais.SelectedItem);
                   comando.ExecuteNonQuery();
                   conexion.Close();*/
+                MessageBox.Show(Pais.SelectedItem.ToString());
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error");
@@ -39,6 +41,40 @@ namespace WFAppCRUD
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+            conexion.Open();
+            SqlCommand comando1 = new SqlCommand("ObtenerPais", conexion);
+            comando1.CommandType = CommandType.StoredProcedure;
+            var listaPais = new List<Pais>();
+            var resultado = comando1.ExecuteReader();
+
+            while (resultado.Read()) {
+                listaPais.Add(new Models.Pais { IdPais=resultado.GetInt32(0), NombrePais=resultado.GetString(1) });
+            }
+            conexion.Close();
+            Pais.DisplayMember = "NombrePais";
+            Pais.ValueMember = "IdPais";
+            Pais.DataSource = listaPais;
+
+
+            conexion.Open();
+            SqlCommand comando2 = new SqlCommand("ObtenerCategoria", conexion);
+            comando2.CommandType = CommandType.StoredProcedure;
+            var listaCategoria = new List<Categoria>();
+            var resultado1 = comando2.ExecuteReader();
+
+            while (resultado1.Read())
+            {
+                listaCategoria.Add(new Models.Categoria { IdCategoria = resultado1.GetInt32(0), NombreCategoria = resultado1.GetString(1) });
+            }
+            conexion.Close();
+            Categoria.DisplayMember = "NombreCategoria";
+            Categoria.ValueMember = "IdCategoria";
+            Categoria.DataSource = listaCategoria;
 
         }
     }

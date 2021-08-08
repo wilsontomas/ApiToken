@@ -1,0 +1,10 @@
+C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\WFAppCRUD\bin\Debug\WFAppCRUD.exe.config
+C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\WFAppCRUD\bin\Debug\WFAppCRUD.exe
+C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\WFAppCRUD\bin\Debug\WFAppCRUD.pdb
+C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\WFAppCRUD\obj\Debug\WFAppCRUD.csprojAssemblyReference.cache
+C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\WFAppCRUD\obj\Debug\WFAppCRUD.Form1.resources
+C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\WFAppCRUD\obj\Debug\WFAppCRUD.Properties.Resources.resources
+C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\WFAppCRUD\obj\Debug\WFAppCRUD.csproj.GenerateResource.cache
+C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\WFAppCRUD\obj\Debug\WFAppCRUD.csproj.CoreCompileInputs.cache
+C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\WFAppCRUD\obj\Debug\WFAppCRUD.exe
+C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\WFAppCRUD\obj\Debug\WFAppCRUD.pdb
