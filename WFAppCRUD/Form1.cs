@@ -108,5 +108,10 @@ namespace WFAppCRUD
             conexion.Close();
             dataGrid.DataSource = listaNoticias;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show(dataGrid.SelectedRows[0].Selected.);
+        }
     }
 }
