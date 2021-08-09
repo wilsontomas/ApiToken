@@ -24,12 +24,18 @@ namespace ManagerNoticias1
 
         private async void Noticias_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(TokenStorage.Instance.token);
+            //MessageBox.Show(TokenStorage.Instance.token);
             HttpClient cliente = new HttpClient();
             cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer",TokenStorage.Instance.token);
-           // cliente.DefaultRequestHeaders.Add("Access-Control-Allow-Origin", "http://localhost:3000");
+          
             var HttpRespuestaPais = await cliente.GetAsync("https://localhost:44394/api/Noticias/ObtenerPais");
-            var respuestaPais =JsonSerializer.Deserialize<List<Pais>>(await HttpRespuestaPais.Content.ReadAsStringAsync()).ToList();
+            var options = new JsonSerializerOptions
+            {
+                IncludeFields = true,
+            };
+            var respuestaPais =JsonSerializer.Deserialize<List<Pais>>(await HttpRespuestaPais.Content.ReadAsStringAsync(), options);
+            Pais.DisplayMember = "NombrePais";
+            Pais.ValueMember = "IdPais";
             Pais.DataSource = respuestaPais;
             foreach(var item in respuestaPais)
             {
