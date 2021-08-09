@@ -61,11 +61,11 @@ namespace ManagerNoticias1
             form1.ShowDialog();
         }
 
-        private void Guardar_Click(object sender, EventArgs e)
+        private  void Guardar_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Se debe haber guardado");
-            /*
-           HttpClient cliente = new HttpClient();
+            
+           /*HttpClient cliente = new HttpClient();
             cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", TokenStorage.Instance.token);
             var parametros = new  { Titulo=Titulo.Text, Articulo=Articulo.Text, CategoriaId= (int)Categoria.SelectedValue, PaisId=(int)Pais.SelectedValue };
             HttpContent content = new StringContent(parametros.ToString());
