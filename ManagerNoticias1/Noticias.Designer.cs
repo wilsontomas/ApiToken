@@ -39,8 +39,8 @@ namespace ManagerNoticias1
             this.Guardar = new System.Windows.Forms.Button();
             this.Eliminar = new System.Windows.Forms.Button();
             this.Editar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.DataGrid = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // salir
@@ -130,20 +130,20 @@ namespace ManagerNoticias1
             this.Editar.Text = "Editar";
             this.Editar.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // DataGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 251);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(348, 150);
-            this.dataGridView1.TabIndex = 10;
+            this.DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGrid.Location = new System.Drawing.Point(16, 251);
+            this.DataGrid.Name = "DataGrid";
+            this.DataGrid.Size = new System.Drawing.Size(348, 150);
+            this.DataGrid.TabIndex = 10;
             // 
             // Noticias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(399, 450);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.DataGrid);
             this.Controls.Add(this.Editar);
             this.Controls.Add(this.Eliminar);
             this.Controls.Add(this.Guardar);
@@ -157,7 +157,7 @@ namespace ManagerNoticias1
             this.Name = "Noticias";
             this.Text = "Noticias";
             this.Load += new System.EventHandler(this.Noticias_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,6 +175,6 @@ namespace ManagerNoticias1
         private System.Windows.Forms.Button Guardar;
         private System.Windows.Forms.Button Eliminar;
         private System.Windows.Forms.Button Editar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DataGrid;
     }
 }

@@ -86,7 +86,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArticulosNoticias.cs" />
+    <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Datos.cs" />
+    <Compile Include="Models\Pais.cs" />
     <Compile Include="Models\Token.cs" />
     <Compile Include="Models\TokenStorage.cs" />
     <Compile Include="Noticias.cs">
