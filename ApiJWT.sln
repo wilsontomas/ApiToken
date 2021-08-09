@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiJWT", "ApiJWT\ApiJWT.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFAppCRUD", "WFAppCRUD\WFAppCRUD.csproj", "{DEADFCD9-B4DB-4F27-A46B-46505949C3A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagerNoticias1", "ManagerNoticias1\ManagerNoticias1.csproj", "{94E04452-9867-443D-B6E2-EF04DC29508B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DEADFCD9-B4DB-4F27-A46B-46505949C3A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEADFCD9-B4DB-4F27-A46B-46505949C3A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEADFCD9-B4DB-4F27-A46B-46505949C3A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94E04452-9867-443D-B6E2-EF04DC29508B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94E04452-9867-443D-B6E2-EF04DC29508B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94E04452-9867-443D-B6E2-EF04DC29508B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94E04452-9867-443D-B6E2-EF04DC29508B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
