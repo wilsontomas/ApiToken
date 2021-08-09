@@ -2,6 +2,7 @@
 using ApiJWT.Models;
 using Dapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace ApiJWT.Controllers
 {
+    [DisableCors]
     [Route("api/[controller]")]
     [ApiController]
     public class CuentaController : ControllerBase

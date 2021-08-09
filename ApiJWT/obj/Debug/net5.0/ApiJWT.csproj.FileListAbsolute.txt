@@ -44,3 +44,9 @@ C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\A
 C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\ApiJWT\obj\Debug\net5.0\ref\ApiJWT.dll
 C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\ApiJWT\obj\Debug\net5.0\ApiJWT.pdb
 C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\ApiJWT\obj\Debug\net5.0\ApiJWT.genruntimeconfig.cache
+C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\ApiJWT\bin\Debug\net5.0\System.Web.Cors.dll
+C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\ApiJWT\bin\Debug\net5.0\System.Net.Http.Formatting.dll
+C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\ApiJWT\bin\Debug\net5.0\System.Web.Http.dll
+C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\ApiJWT\bin\Debug\net5.0\System.Web.Http.Cors.dll
+C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\ApiJWT\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\ApiJWT\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

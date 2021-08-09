@@ -2,14 +2,14 @@ import React from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 
 const Carta = (props) => {
-   const history =useHistory();
-   const location = useLocation()
-   const query = new URLSearchParams(location.search);
+   //const history =useHistory();
+   //const location = useLocation()
+   //const query = new URLSearchParams(location.search);
 
-   const ver=(id)=>{
+  /* const ver=(id)=>{
     query.set('id',1)
     history.push('/verNoticia',{search: "?id="+1});
-   }
+   } */
    
     return (
         <div>
