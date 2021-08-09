@@ -40,12 +40,14 @@ namespace ManagerNoticias1
             this.Eliminar = new System.Windows.Forms.Button();
             this.Editar = new System.Windows.Forms.Button();
             this.DataGrid = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.Articulo = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // salir
             // 
-            this.salir.Location = new System.Drawing.Point(289, 170);
+            this.salir.Location = new System.Drawing.Point(289, 241);
             this.salir.Name = "salir";
             this.salir.Size = new System.Drawing.Size(75, 23);
             this.salir.TabIndex = 0;
@@ -105,7 +107,7 @@ namespace ManagerNoticias1
             // 
             // Guardar
             // 
-            this.Guardar.Location = new System.Drawing.Point(16, 170);
+            this.Guardar.Location = new System.Drawing.Point(12, 241);
             this.Guardar.Name = "Guardar";
             this.Guardar.Size = new System.Drawing.Size(75, 23);
             this.Guardar.TabIndex = 7;
@@ -114,7 +116,7 @@ namespace ManagerNoticias1
             // 
             // Eliminar
             // 
-            this.Eliminar.Location = new System.Drawing.Point(106, 170);
+            this.Eliminar.Location = new System.Drawing.Point(104, 241);
             this.Eliminar.Name = "Eliminar";
             this.Eliminar.Size = new System.Drawing.Size(75, 23);
             this.Eliminar.TabIndex = 8;
@@ -123,7 +125,7 @@ namespace ManagerNoticias1
             // 
             // Editar
             // 
-            this.Editar.Location = new System.Drawing.Point(196, 170);
+            this.Editar.Location = new System.Drawing.Point(198, 241);
             this.Editar.Name = "Editar";
             this.Editar.Size = new System.Drawing.Size(75, 23);
             this.Editar.TabIndex = 9;
@@ -133,16 +135,35 @@ namespace ManagerNoticias1
             // DataGrid
             // 
             this.DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGrid.Location = new System.Drawing.Point(16, 251);
+            this.DataGrid.Location = new System.Drawing.Point(16, 288);
             this.DataGrid.Name = "DataGrid";
             this.DataGrid.Size = new System.Drawing.Size(348, 150);
             this.DataGrid.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(39, 157);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(42, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Articulo";
+            // 
+            // Articulo
+            // 
+            this.Articulo.Location = new System.Drawing.Point(122, 157);
+            this.Articulo.Multiline = true;
+            this.Articulo.Name = "Articulo";
+            this.Articulo.Size = new System.Drawing.Size(191, 63);
+            this.Articulo.TabIndex = 12;
             // 
             // Noticias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(399, 450);
+            this.Controls.Add(this.Articulo);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.DataGrid);
             this.Controls.Add(this.Editar);
             this.Controls.Add(this.Eliminar);
@@ -176,5 +197,7 @@ namespace ManagerNoticias1
         private System.Windows.Forms.Button Eliminar;
         private System.Windows.Forms.Button Editar;
         private System.Windows.Forms.DataGridView DataGrid;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox Articulo;
     }
 }

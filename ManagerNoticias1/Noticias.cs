@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using ApiJWT.Models;
+using Newtonsoft.Json;
 
 namespace ManagerNoticias1
 {
@@ -29,19 +30,28 @@ namespace ManagerNoticias1
             cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer",TokenStorage.Instance.token);
           
             var HttpRespuestaPais = await cliente.GetAsync("https://localhost:44394/api/Noticias/ObtenerPais");
-            var options = new JsonSerializerOptions
-            {
-                IncludeFields = true,
-            };
-            var respuestaPais =JsonSerializer.Deserialize<List<Pais>>(await HttpRespuestaPais.Content.ReadAsStringAsync(), options);
+           // var respuestaPais =JsonSerializer.Deserialize<List<Pais>>(await HttpRespuestaPais.Content.ReadAsStringAsync(), options);
+            var respuestaPais = JsonConvert.DeserializeObject<List<Pais>>(await HttpRespuestaPais.Content.ReadAsStringAsync());
             Pais.DisplayMember = "NombrePais";
             Pais.ValueMember = "IdPais";
             Pais.DataSource = respuestaPais;
-            foreach(var item in respuestaPais)
-            {
-                MessageBox.Show(item.NombrePais);
-            }
             
+            var HttpRespuestaCategoria = await cliente.GetAsync("https://localhost:44394/api/Noticias/ObtenerCategoria");
+           // var respuestaPais =JsonSerializer.Deserialize<List<Pais>>(await HttpRespuestaPais.Content.ReadAsStringAsync(), options);
+            var respuestaCategoria = JsonConvert.DeserializeObject<List<Categoria>>(await HttpRespuestaCategoria.Content.ReadAsStringAsync());
+            Categoria.DisplayMember = "NombreCategoria";
+            Categoria.ValueMember = "IdCategoria";
+            Categoria.DataSource = respuestaCategoria;
+
+            var HttpRespuestaNoticias = await cliente.GetAsync("https://localhost:44394/api/Noticias/ObtenerNoticias");
+            // var respuestaPais =JsonSerializer.Deserialize<List<Pais>>(await HttpRespuestaPais.Content.ReadAsStringAsync(), options);
+            var respuestaNoticias = JsonConvert.DeserializeObject<List<ArticulosNoticias>>(await HttpRespuestaNoticias.Content.ReadAsStringAsync());
+            
+            DataGrid.DataSource = respuestaNoticias;
+
+
+
+
         }
 
         private void salir_Click(object sender, EventArgs e)
