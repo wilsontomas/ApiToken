@@ -135,5 +135,22 @@ namespace ApiJWT.Controllers
                 return null;
             }
         }
+
+        [HttpPost("InsertarNoticia")]
+        [Authorize]
+        public IActionResult InsertarNoticia(string Titulo, string Articulo, int CategoriaId, int PaisId)
+        {
+            var parametros = new { @Titulo=Titulo, @Articulo= Articulo, @CategoriaId = CategoriaId, @PaisId = PaisId };
+            if (Titulo == null || Articulo==null || CategoriaId==0 || PaisId==0) return null;
+            try
+            {
+                var noticia = _conexion.Query("InsertarNoticia", parametros, commandType: System.Data.CommandType.StoredProcedure);
+                return Ok();
+            }
+            catch
+            {
+                return Ok();
+            }
+        }
     }
 }

@@ -113,6 +113,7 @@ namespace ManagerNoticias1
             this.Guardar.TabIndex = 7;
             this.Guardar.Text = "Guardar";
             this.Guardar.UseVisualStyleBackColor = true;
+            this.Guardar.Click += new System.EventHandler(this.Guardar_Click);
             // 
             // Eliminar
             // 

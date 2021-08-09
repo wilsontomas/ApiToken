@@ -13,7 +13,6 @@ using System.Net.Http.Headers;
 using System.Text.Json;
 using ApiJWT.Models;
 using Newtonsoft.Json;
-
 namespace ManagerNoticias1
 {
     public partial class Noticias : Form
@@ -60,6 +59,19 @@ namespace ManagerNoticias1
             this.Hide();
             Clave form1 = new Clave();
             form1.ShowDialog();
+        }
+
+        private void Guardar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Se debe haber guardado");
+            /*
+           HttpClient cliente = new HttpClient();
+            cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", TokenStorage.Instance.token);
+            var parametros = new  { Titulo=Titulo.Text, Articulo=Articulo.Text, CategoriaId= (int)Categoria.SelectedValue, PaisId=(int)Pais.SelectedValue };
+            HttpContent content = new StringContent(parametros.ToString());
+            await cliente.PostAsync("https://localhost:44394/api/Noticias/InsertarNoticia", content);*/
+            //  MessageBox.Show(Categoria.SelectedValue.ToString());
+            // MessageBox.Show(Pais.SelectedValue.ToString());
         }
     }
 }
