@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ApiJWT.Controllers
 {
-    [DisableCors]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class NoticiasController : ControllerBase

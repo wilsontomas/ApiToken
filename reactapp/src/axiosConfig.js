@@ -19,7 +19,7 @@ import axios from "axios";
         const headers = {
             'Authorization': 'Bearer '+token,
             'Access-Control-Allow-Origin': 'http://localhost:3000',
-            'Access-Control-Allow-Credentials':true
+            'Content-Type': 'application/json'
             
         };
         
