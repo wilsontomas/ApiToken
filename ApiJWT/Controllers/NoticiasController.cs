@@ -186,7 +186,7 @@ namespace ApiJWT.Controllers
             if (!string.IsNullOrEmpty(model.Titulo) || !string.IsNullOrEmpty(model.Articulo) || model.IdCategoria == 0 || model.IdPais == 0)
             {
 
-                var parametros = new { @Titulo = model.Titulo, @Articulo = model.Articulo, @CategoriaId = model.IdCategoria, @PaisId = model.IdPais };
+                var parametros = new {@IdNoticias=model.IdNoticia, @Titulo = model.Titulo, @Articulo = model.Articulo, @CategoriaId = model.IdCategoria, @PaisId = model.IdPais };
                 if (model.Titulo == null || model.Articulo == null || model.IdCategoria == 0 || model.IdPais == 0) return BadRequest("No se pudo editar la noticia, faltan parametros");
                 try
                 {

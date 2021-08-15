@@ -64,8 +64,9 @@ namespace ManagerNoticias1
 
                 HttpClient cliente = new HttpClient();
                 cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", TokenStorage.Instance.token);
-                  var ArticuloModel1 = new ArticuloModel()
+                var ArticuloModel1 = new ArticuloModel()
                 {
+                    IdNoticia = this.Id,
                     Titulo = Titulo.Text,
                     Articulo = Articulo.Text,
                     IdCategoria = int.Parse(CategoriaC.SelectedValue.ToString()),
@@ -75,6 +76,9 @@ namespace ManagerNoticias1
                 var respuesta = await cliente.PostAsJsonAsync("https://localhost:44394/api/Noticias/EditarNoticia", ArticuloModel1);
                 var result = await respuesta.Content.ReadAsStringAsync();
                 MessageBox.Show(result);
+                var noticias = new Noticias();
+                this.Hide();
+                noticias.ShowDialog();
                
             }
             else

@@ -8,6 +8,7 @@ namespace ApiJWT.Models
 {
    public class ArticuloModel
     {
+        public int IdNoticia { get; set; }
         public string Titulo { get; set; }
         public string Articulo { get; set; }
         public int IdCategoria { get; set; }
