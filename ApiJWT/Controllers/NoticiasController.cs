@@ -160,5 +160,50 @@ namespace ApiJWT.Controllers
             }
             else { return BadRequest("Faltan parametros"); }
         }
+
+        [HttpPost("EliminarNoticia")]
+        [Authorize]
+        public IActionResult EliminarNoticia([FromBody] EliminarModel model)
+        {
+            if (model.IdNoticia==0)
+            {
+
+                var parametros = new { @IdNoticia = model.IdNoticia };
+                try
+                {
+                    var noticia = _conexion.Query("EliminarNoticia", parametros, commandType: System.Data.CommandType.StoredProcedure);
+                    return Ok("Se Elimino la noticia");
+                }
+                catch
+                {
+                    return BadRequest("No se pudo Eliminar la noticia");
+                }
+
+            }
+            else { return BadRequest("Faltan parametros"); }
+        }
+
+        [HttpPost("EditarNoticia")]
+        [Authorize]
+        public IActionResult EditarNoticia([FromBody] ArticuloModel model)
+        {
+            if (!string.IsNullOrEmpty(model.Titulo) || !string.IsNullOrEmpty(model.Articulo) || model.IdCategoria == 0 || model.IdPais == 0)
+            {
+
+                var parametros = new { @Titulo = model.Titulo, @Articulo = model.Articulo, @CategoriaId = model.IdCategoria, @PaisId = model.IdPais };
+                if (model.Titulo == null || model.Articulo == null || model.IdCategoria == 0 || model.IdPais == 0) return BadRequest("No se pudo editar la noticia, faltan parametros");
+                try
+                {
+                    var noticia = _conexion.Query("EditarNoticia", parametros, commandType: System.Data.CommandType.StoredProcedure);
+                    return Ok("Se edito la noticia");
+                }
+                catch
+                {
+                    return BadRequest("No se pudo ediitar la noticia");
+                }
+
+            }
+            else { return BadRequest("Faltan parametros"); }
+        }
     }
 }

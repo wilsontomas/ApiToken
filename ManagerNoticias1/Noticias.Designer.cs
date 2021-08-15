@@ -123,6 +123,7 @@ namespace ManagerNoticias1
             this.Eliminar.TabIndex = 8;
             this.Eliminar.Text = "Eliminar";
             this.Eliminar.UseVisualStyleBackColor = true;
+            this.Eliminar.Click += new System.EventHandler(this.Eliminar_Click);
             // 
             // Editar
             // 
@@ -135,9 +136,15 @@ namespace ManagerNoticias1
             // 
             // DataGrid
             // 
+            this.DataGrid.AllowUserToAddRows = false;
+            this.DataGrid.AllowUserToDeleteRows = false;
+            this.DataGrid.AllowUserToResizeColumns = false;
+            this.DataGrid.AllowUserToResizeRows = false;
             this.DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGrid.Location = new System.Drawing.Point(16, 288);
             this.DataGrid.Name = "DataGrid";
+            this.DataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DataGrid.ShowEditingIcon = false;
             this.DataGrid.Size = new System.Drawing.Size(348, 150);
             this.DataGrid.TabIndex = 10;
             // 

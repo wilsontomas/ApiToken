@@ -85,6 +85,9 @@ namespace ManagerNoticias1
                 var respuestaNoticias = JsonConvert.DeserializeObject<List<ArticulosNoticias>>(await HttpRespuestaNoticias.Content.ReadAsStringAsync());
 
                 DataGrid.DataSource = respuestaNoticias;
+
+                Articulo.Text = "";
+                Titulo.Text = "";
                 //MessageBox.Show(Categoria.SelectedValue.ToString());
                 // MessageBox.Show(Pais.SelectedValue.ToString());
             }
@@ -93,5 +96,34 @@ namespace ManagerNoticias1
                     MessageBox.Show("Los campos deben estar llenos");
                 }
             }
+
+        private async void Eliminar_Click(object sender, EventArgs e)
+        {
+           
+            var confirmResult = MessageBox.Show("Quieres eliminar este registro?",
+                                    "CONFIRMACIOND DE ELIMINACION",
+                                    MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                int numerotxt = 0;
+                if (int.TryParse(DataGrid.CurrentRow.Cells[0].Value.ToString(), out numerotxt))
+                {
+                   HttpClient cliente = new HttpClient();
+                    cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", TokenStorage.Instance.token);
+                    var eliminarModels = new EliminarModel() {IdNoticia=numerotxt };
+                   
+                    var respuesta = await cliente.PostAsJsonAsync("https://localhost:44394/api/Noticias/EliminarNoticia", eliminarModels);
+                    var result = await respuesta.Content.ReadAsStringAsync();
+                    MessageBox.Show(result);
+
+                    //recargamos la lista
+                    var HttpRespuestaNoticias = await cliente.GetAsync("https://localhost:44394/api/Noticias/ObtenerNoticias");
+                    var respuestaNoticias = JsonConvert.DeserializeObject<List<ArticulosNoticias>>(await HttpRespuestaNoticias.Content.ReadAsStringAsync());
+
+                    DataGrid.DataSource = respuestaNoticias;
+                    //MessageBox.Show(numerotxt.ToString());
+                }
+            }
+        }
     }
 }
