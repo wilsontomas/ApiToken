@@ -27,17 +27,17 @@ namespace ManagerNoticias1
         {
             //MessageBox.Show(TokenStorage.Instance.token);
             HttpClient cliente = new HttpClient();
-            cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer",TokenStorage.Instance.token);
-          
+            cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", TokenStorage.Instance.token);
+
             var HttpRespuestaPais = await cliente.GetAsync("https://localhost:44394/api/Noticias/ObtenerPais");
-           // var respuestaPais =JsonSerializer.Deserialize<List<Pais>>(await HttpRespuestaPais.Content.ReadAsStringAsync(), options);
+            // var respuestaPais =JsonSerializer.Deserialize<List<Pais>>(await HttpRespuestaPais.Content.ReadAsStringAsync(), options);
             var respuestaPais = JsonConvert.DeserializeObject<List<Pais>>(await HttpRespuestaPais.Content.ReadAsStringAsync());
             Pais.DisplayMember = "NombrePais";
             Pais.ValueMember = "IdPais";
             Pais.DataSource = respuestaPais;
-            
+
             var HttpRespuestaCategoria = await cliente.GetAsync("https://localhost:44394/api/Noticias/ObtenerCategoria");
-           // var respuestaPais =JsonSerializer.Deserialize<List<Pais>>(await HttpRespuestaPais.Content.ReadAsStringAsync(), options);
+            // var respuestaPais =JsonSerializer.Deserialize<List<Pais>>(await HttpRespuestaPais.Content.ReadAsStringAsync(), options);
             var respuestaCategoria = JsonConvert.DeserializeObject<List<Categoria>>(await HttpRespuestaCategoria.Content.ReadAsStringAsync());
             Categoria.DisplayMember = "NombreCategoria";
             Categoria.ValueMember = "IdCategoria";
@@ -46,7 +46,7 @@ namespace ManagerNoticias1
             var HttpRespuestaNoticias = await cliente.GetAsync("https://localhost:44394/api/Noticias/ObtenerNoticias");
             // var respuestaPais =JsonSerializer.Deserialize<List<Pais>>(await HttpRespuestaPais.Content.ReadAsStringAsync(), options);
             var respuestaNoticias = JsonConvert.DeserializeObject<List<ArticulosNoticias>>(await HttpRespuestaNoticias.Content.ReadAsStringAsync());
-            
+
             DataGrid.DataSource = respuestaNoticias;
 
 
@@ -64,22 +64,24 @@ namespace ManagerNoticias1
 
         private async void Guardar_Click(object sender, EventArgs e)
         {
-           
+
             if (!string.IsNullOrEmpty(Titulo.Text) || !string.IsNullOrEmpty(Articulo.Text))
             {
 
-                 HttpClient cliente = new HttpClient();
-                 cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", TokenStorage.Instance.token);
-                     // var parametros = new  { Titulo=Titulo.Text, Articulo=Articulo.Text, CategoriaId= (int)Categoria.SelectedValue, PaisId=(int)Pais.SelectedValue };
-                     var ArticuloModel1 = new ArticuloModel() {
-                         Titulo = Titulo.Text, 
-                         Articulo = Articulo.Text,
-                         IdCategoria = int.Parse(Categoria.SelectedValue.ToString()),
-                         IdPais = int.Parse(Pais.SelectedValue.ToString()) };
+                HttpClient cliente = new HttpClient();
+                cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", TokenStorage.Instance.token);
+                // var parametros = new  { Titulo=Titulo.Text, Articulo=Articulo.Text, CategoriaId= (int)Categoria.SelectedValue, PaisId=(int)Pais.SelectedValue };
+                var ArticuloModel1 = new ArticuloModel()
+                {
+                    Titulo = Titulo.Text,
+                    Articulo = Articulo.Text,
+                    IdCategoria = int.Parse(Categoria.SelectedValue.ToString()),
+                    IdPais = int.Parse(Pais.SelectedValue.ToString())
+                };
 
-                 var respuesta =  await cliente.PostAsJsonAsync("https://localhost:44394/api/Noticias/InsertarNoticia", ArticuloModel1);
-                     var result = await respuesta.Content.ReadAsStringAsync();
-                     MessageBox.Show(result);
+                var respuesta = await cliente.PostAsJsonAsync("https://localhost:44394/api/Noticias/InsertarNoticia", ArticuloModel1);
+                var result = await respuesta.Content.ReadAsStringAsync();
+                MessageBox.Show(result);
                 //recargamos
                 var HttpRespuestaNoticias = await cliente.GetAsync("https://localhost:44394/api/Noticias/ObtenerNoticias");
                 var respuestaNoticias = JsonConvert.DeserializeObject<List<ArticulosNoticias>>(await HttpRespuestaNoticias.Content.ReadAsStringAsync());
@@ -91,15 +93,15 @@ namespace ManagerNoticias1
                 //MessageBox.Show(Categoria.SelectedValue.ToString());
                 // MessageBox.Show(Pais.SelectedValue.ToString());
             }
-                else
-                {
-                    MessageBox.Show("Los campos deben estar llenos");
-                }
+            else
+            {
+                MessageBox.Show("Los campos deben estar llenos");
             }
+        }
 
         private async void Eliminar_Click(object sender, EventArgs e)
         {
-           
+
             var confirmResult = MessageBox.Show("Quieres eliminar este registro?",
                                     "CONFIRMACIOND DE ELIMINACION",
                                     MessageBoxButtons.YesNo);
@@ -108,10 +110,10 @@ namespace ManagerNoticias1
                 int numerotxt = 0;
                 if (int.TryParse(DataGrid.CurrentRow.Cells[0].Value.ToString(), out numerotxt))
                 {
-                   HttpClient cliente = new HttpClient();
+                    HttpClient cliente = new HttpClient();
                     cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", TokenStorage.Instance.token);
-                    var eliminarModels = new EliminarModel() {IdNoticia=numerotxt };
-                   
+                    var eliminarModels = new EliminarModel() { IdNoticia = numerotxt };
+
                     var respuesta = await cliente.PostAsJsonAsync("https://localhost:44394/api/Noticias/EliminarNoticia", eliminarModels);
                     var result = await respuesta.Content.ReadAsStringAsync();
                     MessageBox.Show(result);
@@ -123,6 +125,19 @@ namespace ManagerNoticias1
                     DataGrid.DataSource = respuestaNoticias;
                     //MessageBox.Show(numerotxt.ToString());
                 }
+                else { MessageBox.Show("No se pudo convertir numero"); }
+            }
+        }
+
+        private void Editar_Click(object sender, EventArgs e)
+        {
+            int numerotxt = 0;
+            if (int.TryParse(DataGrid.CurrentRow.Cells[0].Value.ToString(), out numerotxt))
+            {
+                var edicion = new Edicion();
+                edicion.Id = numerotxt;
+                this.Hide();
+                edicion.ShowDialog();
             }
         }
     }

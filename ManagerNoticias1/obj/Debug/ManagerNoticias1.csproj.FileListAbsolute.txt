@@ -32,3 +32,4 @@ C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\M
 C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\ManagerNoticias1\obj\Debug\ManagerNoticias1.exe
 C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\ManagerNoticias1\obj\Debug\ManagerNoticias1.pdb
 C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\ManagerNoticias1\obj\Debug\ManagerNoticias1.Noticias.resources
+C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Practica 3\ApiJWT\ManagerNoticias1\obj\Debug\ManagerNoticias1.Edicion.resources

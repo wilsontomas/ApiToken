@@ -163,12 +163,10 @@ namespace ApiJWT.Controllers
 
         [HttpPost("EliminarNoticia")]
         [Authorize]
-        public IActionResult EliminarNoticia([FromBody] EliminarModel model)
+        public IActionResult EliminarNoticia([FromBody] EliminarModel eliminarModels)
         {
-            if (model.IdNoticia==0)
-            {
-
-                var parametros = new { @IdNoticia = model.IdNoticia };
+            
+                var parametros = new { @IdNoticia = eliminarModels.IdNoticia };
                 try
                 {
                     var noticia = _conexion.Query("EliminarNoticia", parametros, commandType: System.Data.CommandType.StoredProcedure);
@@ -176,12 +174,10 @@ namespace ApiJWT.Controllers
                 }
                 catch
                 {
-                    return BadRequest("No se pudo Eliminar la noticia");
+                    return BadRequest("No se pudo Eliminar la noticia ");
                 }
 
-            }
-            else { return BadRequest("Faltan parametros"); }
-        }
+             }
 
         [HttpPost("EditarNoticia")]
         [Authorize]
@@ -197,9 +193,9 @@ namespace ApiJWT.Controllers
                     var noticia = _conexion.Query("EditarNoticia", parametros, commandType: System.Data.CommandType.StoredProcedure);
                     return Ok("Se edito la noticia");
                 }
-                catch
+                catch(Exception er)
                 {
-                    return BadRequest("No se pudo ediitar la noticia");
+                    return BadRequest(er.Message);
                 }
 
             }

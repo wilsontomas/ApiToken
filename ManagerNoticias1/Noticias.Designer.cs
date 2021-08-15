@@ -133,6 +133,7 @@ namespace ManagerNoticias1
             this.Editar.TabIndex = 9;
             this.Editar.Text = "Editar";
             this.Editar.UseVisualStyleBackColor = true;
+            this.Editar.Click += new System.EventHandler(this.Editar_Click);
             // 
             // DataGrid
             // 
