@@ -33,6 +33,7 @@ namespace ApiJWT
         {
             //EnableCorsAttribute enableCors = new EnableCorsAttribute("*","*","*");
             services.AddSingleton<IConfiguration>(Configuration);
+
             services.AddCors();
             var tokenprovider = new TokenProvider(
                 Configuration["Jwt:Issuer"],
