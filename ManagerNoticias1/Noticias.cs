@@ -11,8 +11,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Http.Headers;
 using System.Text.Json;
-using ApiJWT.Models;
 using Newtonsoft.Json;
+using ManagerNoticias1.Models;
+
 namespace ManagerNoticias1
 {
     public partial class Noticias : Form
@@ -61,17 +62,36 @@ namespace ManagerNoticias1
             form1.ShowDialog();
         }
 
-        private  void Guardar_Click(object sender, EventArgs e)
+        private async void Guardar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Se debe haber guardado");
-            
-           /*HttpClient cliente = new HttpClient();
-            cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", TokenStorage.Instance.token);
-            var parametros = new  { Titulo=Titulo.Text, Articulo=Articulo.Text, CategoriaId= (int)Categoria.SelectedValue, PaisId=(int)Pais.SelectedValue };
-            HttpContent content = new StringContent(parametros.ToString());
-            await cliente.PostAsync("https://localhost:44394/api/Noticias/InsertarNoticia", content);*/
-            //  MessageBox.Show(Categoria.SelectedValue.ToString());
-            // MessageBox.Show(Pais.SelectedValue.ToString());
-        }
+           
+            if (!string.IsNullOrEmpty(Titulo.Text) || !string.IsNullOrEmpty(Articulo.Text))
+            {
+
+                 HttpClient cliente = new HttpClient();
+                 cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", TokenStorage.Instance.token);
+                     // var parametros = new  { Titulo=Titulo.Text, Articulo=Articulo.Text, CategoriaId= (int)Categoria.SelectedValue, PaisId=(int)Pais.SelectedValue };
+                     var ArticuloModel1 = new ArticuloModel() {
+                         Titulo = Titulo.Text, 
+                         Articulo = Articulo.Text,
+                         IdCategoria = int.Parse(Categoria.SelectedValue.ToString()),
+                         IdPais = int.Parse(Pais.SelectedValue.ToString()) };
+
+                 var respuesta =  await cliente.PostAsJsonAsync("https://localhost:44394/api/Noticias/InsertarNoticia", ArticuloModel1);
+                     var result = await respuesta.Content.ReadAsStringAsync();
+                     MessageBox.Show(result);
+                //recargamos
+                var HttpRespuestaNoticias = await cliente.GetAsync("https://localhost:44394/api/Noticias/ObtenerNoticias");
+                var respuestaNoticias = JsonConvert.DeserializeObject<List<ArticulosNoticias>>(await HttpRespuestaNoticias.Content.ReadAsStringAsync());
+
+                DataGrid.DataSource = respuestaNoticias;
+                //MessageBox.Show(Categoria.SelectedValue.ToString());
+                // MessageBox.Show(Pais.SelectedValue.ToString());
+            }
+                else
+                {
+                    MessageBox.Show("Los campos deben estar llenos");
+                }
+            }
     }
 }

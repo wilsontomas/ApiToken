@@ -140,19 +140,25 @@ namespace ApiJWT.Controllers
 
         [HttpPost("InsertarNoticia")]
         [Authorize]
-        public IActionResult InsertarNoticia(string Titulo, string Articulo, int CategoriaId, int PaisId)
+        public IActionResult InsertarNoticia( [FromBody] ArticuloModel model)
         {
-            var parametros = new { @Titulo=Titulo, @Articulo= Articulo, @CategoriaId = CategoriaId, @PaisId = PaisId };
-            if (Titulo == null || Articulo==null || CategoriaId==0 || PaisId==0) return null;
-            try
+            if (!string.IsNullOrEmpty(model.Titulo) || !string.IsNullOrEmpty(model.Articulo) || model.IdCategoria ==0 || model.IdPais ==0)
+            {
+            
+            var parametros = new { @Titulo= model.Titulo, @Articulo= model.Articulo, @CategoriaId = model.IdCategoria, @PaisId = model.IdPais };
+            if (model.Titulo == null || model.Articulo ==null || model.IdCategoria ==0 || model.IdPais ==0) return BadRequest("No se pudo insertar la noticia, faltan parametros");
+                try
             {
                 var noticia = _conexion.Query("InsertarNoticia", parametros, commandType: System.Data.CommandType.StoredProcedure);
-                return Ok();
+                return Ok("Se inserto la noticia");
             }
             catch
             {
-                return Ok();
+                return BadRequest("No se pudo insertar la noticia");
             }
+
+            }
+            else { return BadRequest("Faltan parametros"); }
         }
     }
 }

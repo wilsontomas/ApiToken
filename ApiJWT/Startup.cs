@@ -32,8 +32,8 @@ namespace ApiJWT
         public void ConfigureServices(IServiceCollection services)
         {
             //EnableCorsAttribute enableCors = new EnableCorsAttribute("*","*","*");
-            
 
+            services.AddCors();
             var tokenprovider = new TokenProvider(
                 Configuration["Jwt:Issuer"],
                 Configuration["Jwt:Audience"],
@@ -50,7 +50,7 @@ namespace ApiJWT
                     .RequireAuthenticatedUser()
                     .Build();
             });
-            services.AddTransient<Conexion>();
+            services.AddScoped<Conexion>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
