@@ -5,18 +5,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Configuration;
 using ApiJWT.Interfaces;
+using Microsoft.Extensions.Configuration;
 
 namespace ApiJWT.Models
 {
     public class Conexion
     {
+        public IConfiguration _Configuration { get; set; }
+        public Conexion(IConfiguration conf)
+        {
+            this._Configuration =conf;
+        }
         private SqlConnection _conexion { get; set; }
 
         public SqlConnection conexion
         {
             get
             {
-                if (this._conexion == null) { this._conexion = new SqlConnection("Data Source=DESKTOP-V32QJTJ\\SQLEXPRESS;Initial Catalog=Noticias;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"); }
+                if (this._conexion == null) { this._conexion = new SqlConnection(_Configuration.GetConnectionString("Conexion")); }
                 return this._conexion;
             }
         }
